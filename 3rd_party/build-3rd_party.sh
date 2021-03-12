@@ -31,8 +31,19 @@ build_com()
 
 build_zlib()
 {
+    target=${1}-${3}
+
+    if [ ! -f ${target}.tar.gz ];then
+        url=https://udomain.dl.sourceforge.net/project/libpng/zlib/${3}/${target}.tar.gz
+        wget ${url}
+    fi
+
+    rm -rf ${target}
+    tar xvf ${target}.tar.gz >/dev/null 2>&1
+
     export CHOST=${CROSS_GCC_DIR}/${CROSS_HOST}
 
+    cd ${target}
     ./configure \
         --prefix=${INSTALL_PREFIX}
 }
@@ -56,13 +67,14 @@ build_freetype()
     build_com --with-harfbuzz=no
 }
 
-#      src_name     name        version     cmd             flag
-zlib=("zlib         zlib        1.2.8       build_zlib      tar_gz")
-libpng=("libpng     libpng      1.6.36      build_libpng    tar_gz")
-jpegsrc=("jpegsrc   jpeg        7           build_jpegsrc   no_tar")
-freetype=("freetype freetype    2.6.1       build_freetype  tar_gz")
+#      src_name     name        version     cmd
+zlib=("zlib         zlib        1.2.8       build_zlib")
+libpng=("libpng     libpng      1.6.36      build_libpng")
+jpegsrc=("jpegsrc   jpeg        7           build_jpegsrc")
+freetype=("freetype freetype    2.6.1       build_freetype")
 
-libs=(zlib libpng jpegsrc freetype)
+libs=(libpng)
+# libs=(zlib libpng jpegsrc freetype)
  
 for i in ${libs[@]};
 do
@@ -73,16 +85,13 @@ do
     name=${lib_info[1]}
     version=${lib_info[2]}
     cmd=${lib_info[3]}
-    flag=${lib_info[4]}
 
-    # echo ${name} ${version} ${cmd} ${flag}
+    # echo ${src_name} ${name} ${version} ${cmd}
 
-    if [ ${flag} = tar_gz ]; then
-        rm -rf ${src_name}-${version}
-        tar xvf ${src_name}-${version}.tar.gz >/dev/null 2>&1
-
-        cd ${name}-${version}
-    fi
+    # rm -rf ${src_name}-${version}
+    # tar xvf ${src_name}-${version}.tar.gz >/dev/null 2>&1
+#
+    # cd ${name}-${version}
 
     ${cmd} ${src_name} ${name} ${version}
 
