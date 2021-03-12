@@ -4,4 +4,10 @@
 *.tar.gz
 
 zlib-1.2.8/
+freetype-2.6.1/
+jpeg-7/
+libpng-1.6.36/
+
 install/
+
+

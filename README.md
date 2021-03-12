@@ -1,2 +1,22 @@
 # cross-build-minigui
-Cross compiling MiniGUI
+
+## 3rd_party
+
+* zlib
+* libpng
+* jpegsrc
+* freetype
+
+## minigui
+
+
+
+
+## 交叉编译
+
+
+## FAQ
+
+
+
+
