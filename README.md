@@ -10,6 +10,7 @@
 ## minigui
 
 * libminigui
+* minigui-res
 
 
 ## 交叉编译

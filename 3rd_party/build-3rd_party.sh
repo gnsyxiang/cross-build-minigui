@@ -4,7 +4,7 @@
 
 party_3rd_path=$TOP_DIR/3rd_party
 
-wget_com()
+wget_3rd_party_com()
 {
     cd $party_3rd_path
     if [ ! -f $1.tar.gz ];then
@@ -15,7 +15,7 @@ wget_com()
     tar xvf ${1}.tar.gz >/dev/null 2>&1
 }
 
-build_com()
+build_3rd_party_com()
 {
     cd ${1}
     ./configure \
@@ -32,7 +32,7 @@ build_zlib()
     target=${2}-${3}
     url=https://udomain.dl.sourceforge.net/project/libpng/zlib/${3}/${target}.tar.gz
 
-    wget_com ${target} ${url}
+    wget_3rd_party_com ${target} ${url}
 
     export CHOST=${CROSS_GCC_DIR}/${HOST}
 
@@ -46,8 +46,8 @@ build_libpng()
     target=${2}-${3}
     url=https://udomain.dl.sourceforge.net/project/libpng/libpng16/${3}/${target}.tar.gz
 
-    wget_com ${target} ${url}
-    build_com ${target}
+    wget_3rd_party_com ${target} ${url}
+    build_3rd_party_com ${target}
 }
 
 build_jpegsrc()
@@ -55,8 +55,8 @@ build_jpegsrc()
     target=${2}-${3}
     url=http://www.ijg.org/files/${1}.v${3}.tar.gz
 
-    wget_com ${1}.v${3} ${url}
-    build_com ${target}
+    wget_3rd_party_com ${1}.v${3} ${url}
+    build_3rd_party_com ${target}
 }
 
 build_freetype()
@@ -64,8 +64,8 @@ build_freetype()
     target=${2}-${3}
     url=https://udomain.dl.sourceforge.net/project/freetype/freetype2/${3}/${target}.tar.gz
 
-    wget_com ${target} ${url}
-    build_com ${target} --with-harfbuzz=no
+    wget_3rd_party_com ${target} ${url}
+    build_3rd_party_com ${target} --with-harfbuzz=no
 }
 
 build_3rd_party()

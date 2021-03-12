@@ -2,20 +2,14 @@
 
 # set -x
 
-minigui_path=$TOP_DIR/minigui
+example_path=$TOP_DIR/example
 
-wget_minigui_com()
+wget_com_1()
 {
-    cd $minigui_path
-    if [ ! -f $1.tar.gz ];then
-        wget $2
-    fi
-
-    rm -rf ${1}
-    tar xvf ${1}.tar.gz >/dev/null 2>&1
+    cd $example_path
 }
 
-build_minigui_com()
+build_example_com()
 {
     cd ${1}
     ./autogen.sh
@@ -29,31 +23,21 @@ build_minigui_com()
         PKG_CONFIG_PATH="$PKG_CONFIG_PATH_COM"
 }
 
-build_libminigui()
+build_hello_world()
 {
     target=${2}-${3}
     url=https://codeload.github.com/VincentWei/$2/tar.gz/$3
 
-    wget_minigui_com ${target} ${url}
-    build_minigui_com ${target} "${libminigui_param}"
+    wget_com_1
+    build_example_com ${target}
 }
 
-build_minigui_res()
-{
-    target=${2}-${3}
-    url=https://codeload.github.com/VincentWei/$2/tar.gz/$3
-
-    wget_minigui_com ${target} ${url}
-    build_minigui_com ${target}
-}
-
-build_minigui()
+build_example()
 {
     #           src_name        name        version     cmd
-    libminigui=("libminigui     minigui     ver-5-0-3   build_libminigui")
-    minigui_res=("minigui-res   minigui-res ver-5-0-3   build_minigui_res")
+    hello_world=("hello_world   hello_world 0.0.1       build_hello_world")
 
-    libs=(libminigui minigui_res)
+    libs=(hello_world)
 
     for i in ${libs[@]};
     do
