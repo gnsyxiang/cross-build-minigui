@@ -76,7 +76,6 @@ build_3rd_party()
     jpegsrc=("jpegsrc   jpeg        7           build_jpegsrc")
     freetype=("freetype freetype    2.6.1       build_freetype")
 
-    # libs=(libpng)
     libs=(zlib libpng jpegsrc freetype)
 
     for i in ${libs[@]};

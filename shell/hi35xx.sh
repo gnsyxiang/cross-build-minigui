@@ -7,3 +7,4 @@ HOST=arm-hisiv510-linux
 CPPFLAGS_COM=""
 LDFLAGS_COM=""
 
+libminigui_param="--with-runmode=ths --disable-videoqvfb --disable-videopcxvfb"

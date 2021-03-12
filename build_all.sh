@@ -6,10 +6,13 @@ NRJOBS=`getconf _NPROCESSORS_ONLN`
 
 source ${TOP_DIR}/shell/platform.sh
 source ${TOP_DIR}/3rd_party/build-3rd_party.sh
+source ${TOP_DIR}/minigui/build-minigui.sh
 
-build_3rd_party
+# build_3rd_party
 
 
+
+build_minigui
 
 
 
