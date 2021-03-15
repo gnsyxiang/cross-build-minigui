@@ -8,7 +8,7 @@ wget_minigui_com()
 {
     cd $minigui_path
     if [ ! -f $1.tar.gz ];then
-        wget $2
+        wget -O $1.tar.gz -c $2
     fi
 
     rm -rf ${1}
@@ -74,5 +74,4 @@ build_minigui()
 done
 
 }
-
 
