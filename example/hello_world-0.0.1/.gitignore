@@ -69,5 +69,6 @@ install/
 *.la
 
 example/helloworld
+example/mginit
 
 

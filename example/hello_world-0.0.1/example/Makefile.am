@@ -22,6 +22,7 @@ INCLUDE_COM = \
 			  -I$(top_srcdir)/include
 
 CFLAGS_COM = \
+			 -Wno-error=implicit-fallthrough= \
 			 -Wno-error=sign-compare \
 			 $(AM_CFLAGS_COM) \
 			 $(INCLUDE_COM)
@@ -34,6 +35,16 @@ LDFLAGS_COM = \
 			  -Wl,--gc-sections
 
 bin_PROGRAMS 	=
+
+
+if COMPILE_WITH_THS_MODE
+else
+bin_PROGRAMS		+= mginit
+mginit_SOURCES 	= mginit.c
+mginit_CFLAGS  	= $(CFLAGS_COM)
+mginit_LDADD   	= $(LDADD_COM)
+mginit_LDFLAGS	= $(LDFLAGS_COM)
+endif
 
 bin_PROGRAMS		+= helloworld
 helloworld_SOURCES 	= helloworld.c
