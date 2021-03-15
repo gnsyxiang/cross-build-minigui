@@ -3,7 +3,9 @@
 
 *.tar.gz
 
-install/
+install_5.0.3_ubuntu/
+install_5.0.3_hi35xx/
+minigui/minigui-ver-5-0-3-bak/
 
 zlib-1.2.8/
 freetype-2.6.1/

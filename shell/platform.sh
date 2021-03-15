@@ -2,15 +2,23 @@
 
 # set -x
 
-PLATFORM=hi35xx
+# ubuntu hi35xx
+PLATFORM=ubuntu
 
-if [ ${PLATFORM} = hi35xx ]; then
-    source ${TOP_DIR}/shell/hi35xx.sh
-fi
+case "${PLATFORM}" in
+    ubuntu)
+        source ${TOP_DIR}/shell/ubuntu.sh
+        INSTALL_PREFIX=${TOP_DIR}/install_5.0.3_ubuntu
+        ;;
+    hi35xx)
+        source ${TOP_DIR}/shell/hi35xx.sh
+        INSTALL_PREFIX=${TOP_DIR}/install_5.0.3_hi35xx
+        ;;
+    *)
+        echo "${PLATFORM} Didn't match anything"
+esac
 
 GCC=${CROSS_GCC_PATH}gcc
-
-INSTALL_PREFIX=${TOP_DIR}/install
 
 INSTALL_PREFIX_LIB=${INSTALL_PREFIX}/lib
 INSTALL_PREFIX_INC=${INSTALL_PREFIX}/include

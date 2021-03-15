@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+CROSS_GCC_DIR=
+CROSS_GCC_PATH=
+HOST=
+
+CPPFLAGS_COM=""
+LDFLAGS_COM=""
+
