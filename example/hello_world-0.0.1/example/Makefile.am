@@ -43,7 +43,9 @@ endif
 LDADD_COM =
 
 if COMPILE_WITH_THS_MODE
-LDADD_COM += -lminigui_ths
+LDADD_COM += -lminigui_ths \
+			 -lharfbuzz \
+			 -lrt
 else
 LDADD_COM += -lminigui_procs \
 			 -lharfbuzz \
