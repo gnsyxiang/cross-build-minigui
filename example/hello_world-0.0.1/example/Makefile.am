@@ -18,61 +18,63 @@
 #     last modified: 05/03 2021 10:38
 # ===============================================================
 
+CFLAGS_COM =
+LDADD_COM =
+LDFLAGS_COM =
+
 INCLUDE_COM = \
 			  -I$(top_srcdir)/include
 
-CFLAGS_COM = \
-			 -Wno-error=implicit-fallthrough= \
-			 -Wno-error=sign-compare \
+CFLAGS_COM += \
 			 $(AM_CFLAGS_COM) \
 			 $(INCLUDE_COM)
 
 if COMPILE_WITH_CROSS_BUILD
 CFLAGS_COM += \
-			 -Dhi3536dv100 \
-			 -DHICHIP=0x3536d100 \
-			 -DHI_RELEASE \
-			 -DHI_XXXX \
-			 -DAI_DEV=0 \
-			 -DAO_DEV=0 \
-			 -DHI_ACODEC_TYPE_INNER \
-			 -DHI_ACODEC_TYPE_HDMI  \
-			 -Wno-error=sign-compare
-endif
-
-LDADD_COM =
-
+			  -Dhi3536dv100 \
+			  -DHICHIP=0x3536d100 \
+			  -DHI_RELEASE \
+			  -DHI_XXXX \
+			  -DAI_DEV=0 \
+			  -DAO_DEV=0 \
+			  -DHI_ACODEC_TYPE_INNER \
+			  -DHI_ACODEC_TYPE_HDMI  \
+			  -Wno-error=sign-compare
 if COMPILE_WITH_THS_MODE
-LDADD_COM += -lminigui_ths \
-			 -lharfbuzz \
-			 -lrt
+LDADD_COM += -lminigui_ths
 else
-LDADD_COM += -lminigui_procs \
-			 -lharfbuzz \
-			 -lrt
+LDADD_COM += -lminigui_procs
+endif
+# -lminigui_ths -lfreetype -ljpeg -lpng
+
+# LDADD_COM += \
+# 			 -lhifb \
+# 			 -lmpi \
+# 			 -lhdmi \
+# 			 -ltde \
+# 			 -lVoiceEngine \
+# 			 -lupvqe \
+# 			 -ldnvqe
+else
+CFLAGS_COM += \
+			 -Wno-error=implicit-fallthrough= \
+			 -Wno-error=sign-compare
+if COMPILE_WITH_THS_MODE
+LDADD_COM += -lminigui_ths
+else
+LDADD_COM += -lminigui_procs
+endif
+LDADD_COM += \
+			 -lharfbuzz
 endif
 
 LDADD_COM += \
-			-ljpeg -lpng \
-			-lz -lm -ldl -lpthread \
-			$(top_builddir)/src/lib@project_name@.la
+			 -ljpeg -lpng \
+			 -lz -lm -ldl -lrt -lpthread \
+			 $(top_builddir)/src/lib@project_name@.la
 
-if COMPILE_WITH_CROSS_BUILD
-LDADD_COM += \
-			-lminigui_ths -lfreetype -ljpeg -lpng \
-/home/uos/data/office/meian/hi3536d/Hi3536D-V100R001C01SPC020/src-Hi3536DV100_SDK_V1.0.2.0/mpp/lib/libmpi.a \
-/home/uos/data/office/meian/hi3536d/Hi3536D-V100R001C01SPC020/src-Hi3536DV100_SDK_V1.0.2.0/mpp/lib/libhdmi.a \
-/home/uos/data/office/meian/hi3536d/Hi3536D-V100R001C01SPC020/src-Hi3536DV100_SDK_V1.0.2.0/mpp/lib/libtde.a \
-/home/uos/data/office/meian/hi3536d/Hi3536D-V100R001C01SPC020/src-Hi3536DV100_SDK_V1.0.2.0/mpp/lib/libVoiceEngine.a \
-/home/uos/data/office/meian/hi3536d/Hi3536D-V100R001C01SPC020/src-Hi3536DV100_SDK_V1.0.2.0/mpp/lib/libupvqe.a \
-/home/uos/data/office/meian/hi3536d/Hi3536D-V100R001C01SPC020/src-Hi3536DV100_SDK_V1.0.2.0/mpp/lib/libdnvqe.a \
-/home/uos/data/office/meian/hi3536d/Hi3536D-V100R001C01SPC020/src-Hi3536DV100_SDK_V1.0.2.0/mpp/lib/libjpeg.a \
--lz -lm -ldl -lpthread \
-			$(top_builddir)/src/lib@project_name@.la
-endif
-
-LDFLAGS_COM = \
-			  -Wl,--gc-sections
+LDFLAGS_COM += \
+			   -Wl,--gc-sections
 
 bin_PROGRAMS 	=
 
