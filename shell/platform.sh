@@ -4,6 +4,7 @@
 
 # ubuntu hi35xx
 PLATFORM=ubuntu
+THS_MODE=yes
 
 case "${PLATFORM}" in
     ubuntu)

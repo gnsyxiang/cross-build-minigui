@@ -8,6 +8,9 @@ m4_include([m4/check_project_info.m4])
 m4_include([res/m4/check_doxygen.m4])
 m4_include([res/m4/ax_prog_doxygen.m4])
 
+m4_include([res/m4/enable_cross_build.m4])
+m4_include([res/m4/enable_ths_mode.m4])
+
 AC_INIT([PROJECT_NAME], [VERSION_NUM], [EMAIL_INFO], [PROJECT_NAME])
 AC_CONFIG_SRCDIR([config.h.in])
 AC_CONFIG_HEADERS([config.h])
@@ -24,6 +27,9 @@ LT_INIT
 CHECK_PROJECT_INFO
 CHECK_VERSION_INFO
 CHECK_DOXYGEN
+
+ENABLE_CROSS_BUILD
+ENABLE_THS_MODE
 
 # Checks for programs.
 AC_PROG_CXX
