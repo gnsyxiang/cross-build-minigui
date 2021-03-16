@@ -7,7 +7,7 @@ PLATFORM=hi35xx
 
 # yes: 打开多线程模式
 # no: 打开多进程模式
-THS_MODE=no
+THS_MODE=yes
 
 case "${PLATFORM}" in
     ubuntu)

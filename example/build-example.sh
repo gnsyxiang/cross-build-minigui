@@ -29,7 +29,7 @@ build_hello_world()
     url=https://codeload.github.com/VincentWei/$2/tar.gz/$3
 
     wget_com_1
-    build_example_com ${target} ${hello_world_param}
+    build_example_com ${target} "${hello_world_param}"
 }
 
 build_example()

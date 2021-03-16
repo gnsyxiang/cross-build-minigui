@@ -13,7 +13,6 @@ source ${TOP_DIR}/example/build-example.sh
 
 if [ $# -eq 0 ]; then
     build_3rd_party
-    build_hisi
     build_minigui
     build_example
 else

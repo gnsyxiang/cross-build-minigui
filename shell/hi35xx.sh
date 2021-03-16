@@ -17,13 +17,23 @@ if [ x$THS_MODE = "xno" ]; then
         \
         --disable-videodrm \
         --disable-videoqvfb \
+        --enable-videopcxvfb \
+        \
+        --disable-videohi3536"
+else
+    libminigui_param=" \
+        --with-runmode=ths \
+        --disable-complexscripts \
+        \
+        --with-osname=linux \
+        \
+        --enable-videodrm \
+        --disable-videoqvfb \
         --disable-videopcxvfb \
         \
-        --enable-videohi3536"
-else
-    libminigui_param="--with-runmode=ths"
+        --disable-videohi3536"
     hello_world_param="--enable-ths-mode"
 fi
 
-hello_world_param="--enable-cross-build"
+hello_world_param="${hello_world_param} --enable-cross-build"
 
