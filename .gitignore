@@ -1,19 +1,45 @@
+# ===============================================================
+# 
+# Release under GPLv-3.0.
+# 
+# @file    .gitignore
+# @brief   
+# @author  gnsyxiang <gnsyxiang@163.com>
+# @date    16/03 2021 15:30
+# @version v0.0.1
+# 
+# @since    note
+# @note     note
+# 
+#     change log:
+#     NO.     Author              Date            Modified
+#     00      zhenquan.qiu        16/03 2021      create the file
+# 
+#     last modified: 16/03 2021 15:30
+# ===============================================================
 
-
-
+# -------------------
+ignore source package
+# -------------------
 *.tar.gz
 
-install_5.0.3_ubuntu/
-install_5.0.3_hi35xx/
-minigui/minigui-ver-5-0-3-bak/
-
+# ----------
+# 3rd_party
+# ----------
 zlib-1.2.8/
 freetype-2.6.1/
 jpeg-7/
 libpng-1.6.36/
 
+# -------
+# minigui
+# -------
 minigui-res-ver-5-0-3/
 minigui-ver-5-0-3/
 
-hisi/
+# -------------
+# install files
+# -------------
+install_5.0.3_ubuntu/
+install_5.0.3_hi35xx/
 

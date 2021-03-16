@@ -55,8 +55,7 @@ build_minigui()
 
     libs=(libminigui minigui_res)
 
-    for i in ${libs[@]};
-    do
+    for i in ${libs[@]}; do
         eval lib_info=\${${i}[@]}
         lib_info=(${lib_info})
 
@@ -65,13 +64,12 @@ build_minigui()
         version=${lib_info[2]}
         cmd=${lib_info[3]}
 
-    echo ${src_name} ${name} ${version} ${cmd}
+        # echo ${src_name} ${name} ${version} ${cmd}
 
-    ${cmd} ${src_name} ${name} ${version}
+        ${cmd} ${src_name} ${name} ${version}
 
-    make clean; make -j${NRJOBS}; make install
-    cd $TOP_DIR
-done
-
+        make clean; make -j${NRJOBS}; make install
+        cd $TOP_DIR
+    done
 }
 

@@ -9,31 +9,18 @@ CPPFLAGS_COM=""
 LDFLAGS_COM=""
 
 if [ x$THS_MODE = "xno" ]; then
-    libminigui_param=" \
-        --with-runmode=procs \
-        --disable-complexscripts \
-        \
-        --with-osname=linux \
-        \
-        --disable-videodrm \
-        --disable-videoqvfb \
-        --enable-videopcxvfb \
-        \
-        --disable-videohi3536"
+    libminigui_param="--with-runmode=procs"
 else
-    libminigui_param=" \
-        --with-runmode=ths \
-        --disable-complexscripts \
-        \
-        --with-osname=linux \
-        \
-        --enable-videodrm \
-        --disable-videoqvfb \
-        --disable-videopcxvfb \
-        \
-        --disable-videohi3536"
+    libminigui_param="--with-runmode=ths"
     hello_world_param="--enable-ths-mode"
 fi
+
+libminigui_param="${libminigui_param} \
+    --with-osname=linux \
+    --disable-videopcxvfb \
+    --disable-videodrm \
+    --disable-complexscripts \
+    --disable-videoqvfb"
 
 hello_world_param="${hello_world_param} --enable-cross-build"
 

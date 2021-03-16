@@ -48,15 +48,15 @@ endif
 
 HISI_LIB_PATH = ${HOME}/data/office/minigui/cross-compiling-minigui/hisi/libhifb-0.0.1/lib
 
-LDADD_COM += \
-			 -lhifb \
-			 ${HISI_LIB_PATH}/libmpi.a \
-			 ${HISI_LIB_PATH}/libhdmi.a \
-			 ${HISI_LIB_PATH}/libtde.a \
-			 ${HISI_LIB_PATH}/libVoiceEngine.a \
-			 ${HISI_LIB_PATH}/libupvqe.a \
-			 ${HISI_LIB_PATH}/libdnvqe.a \
-			 ${HISI_LIB_PATH}/libjpeg.a
+# LDADD_COM += \
+# 			 -lhifb \
+# 			 ${HISI_LIB_PATH}/libmpi.a \
+# 			 ${HISI_LIB_PATH}/libhdmi.a \
+# 			 ${HISI_LIB_PATH}/libtde.a \
+# 			 ${HISI_LIB_PATH}/libVoiceEngine.a \
+# 			 ${HISI_LIB_PATH}/libupvqe.a \
+# 			 ${HISI_LIB_PATH}/libdnvqe.a \
+# 			 ${HISI_LIB_PATH}/libjpeg.a
 else
 CFLAGS_COM += \
 			 -Wno-error=implicit-fallthrough= \

@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# set -x
+
 TOP_DIR=$(dirname $(readlink -f "$0"))
 
 NRJOBS=`getconf _NPROCESSORS_ONLN`
@@ -12,7 +14,16 @@ source ${TOP_DIR}/minigui/build-minigui.sh
 source ${TOP_DIR}/example/build-example.sh
 
 if [ $# -eq 0 ]; then
-    build_3rd_party
+    case "${PLATFORM}" in
+        cross-[a-z]*)
+            build_3rd_party
+            ;;
+        ubuntu)
+            ;;
+        *)
+            echo "${name} Didn't match anything"
+            exit
+    esac
     build_minigui
     build_example
 else

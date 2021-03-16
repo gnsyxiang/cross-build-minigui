@@ -2,19 +2,19 @@
 
 # set -x
 
-# ubuntu hi35xx
-PLATFORM=hi35xx
+# ubuntu cross-hi35xx
+PLATFORM=ubuntu
 
 # yes: 打开多线程模式
 # no: 打开多进程模式
-THS_MODE=yes
+THS_MODE=no
 
 case "${PLATFORM}" in
     ubuntu)
         source ${TOP_DIR}/shell/ubuntu.sh
         INSTALL_PREFIX=${TOP_DIR}/install_5.0.3_ubuntu
         ;;
-    hi35xx)
+    cross-hi35xx)
         source ${TOP_DIR}/shell/hi35xx.sh
         INSTALL_PREFIX=${TOP_DIR}/install_5.0.3_hi35xx
         ;;
